@@ -42,15 +42,11 @@ After installation, you should now see a `node_modules` folder.
 ```
 OPENAI_API_KEY=
 
-PINECONE_API_KEY=
-PINECONE_ENVIRONMENT=
-
-PINECONE_INDEX_NAME=
+COLLECTION_NAME=
 
 ```
 
 - Visit [openai](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key) to retrieve API keys and insert into your `.env` file.
-- Visit [pinecone](https://pinecone.io/) to create and retrieve your API keys, and also retrieve your environment and index name from the dashboard.
 
 4. In the `config` folder, replace the `PINECONE_NAME_SPACE` with a `namespace` where you'd like to store your embeddings on Pinecone when you run `npm run ingest`. This namespace will later be used for queries and retrieval.
 
@@ -64,7 +60,13 @@ PINECONE_INDEX_NAME=
 
 2. Run the script `npm run ingest` to 'ingest' and embed your docs. If you run into errors troubleshoot below.
 
-3. Check Pinecone dashboard to verify your namespace and vectors have been added.
+3. Run the Chroma in client server mode:
+To run Chroma in client server mode, run the docker container:
+```
+docker-compose up -d --build
+```
+Then update your chroma client to point at the docker container. Default: localhost:8000
+
 
 ## Run the app
 
